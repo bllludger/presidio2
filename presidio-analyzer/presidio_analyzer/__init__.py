@@ -3,6 +3,7 @@
 
 import logging
 
+from presidio_analyzer.scan_policy import IncompleteScan, strict_scan
 from presidio_analyzer.analysis_explanation import AnalysisExplanation
 from presidio_analyzer.recognizer_result import RecognizerResult
 from presidio_analyzer.dict_analyzer_result import DictAnalyzerResult
@@ -41,6 +42,8 @@ ch.setFormatter(formatter)
 decision_process_logger.addHandler(ch)
 decision_process_logger.setLevel("INFO")
 __all__ = [
+    "IncompleteScan",
+    "strict_scan",
     "Pattern",
     "AnalysisExplanation",
     "RecognizerResult",

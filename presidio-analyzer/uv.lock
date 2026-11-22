@@ -2497,7 +2497,7 @@ wheels = [
 
 [[package]]
 name = "presidio-analyzer"
-version = "2.2.366+ru.mask2"
+version = "2.2.366+ru.mask3"
 source = { editable = "." }
 dependencies = [
     { name = "click" },

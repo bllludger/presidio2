@@ -21,6 +21,9 @@ from presidio_analyzer import AnalysisExplanation, EntityRecognizer, RecognizerR
 
 def _lower(value):
     # Go strings.ToLower uses one rune per input rune (not Python's expanded İ).
+    lowered = value.lower()
+    if len(lowered) == len(value) and "Σ" not in value:
+        return lowered
     return "".join(c.lower()[0] for c in value)
 
 
@@ -208,6 +211,28 @@ class GitleaksSecretRecognizer(EntityRecognizer):
         self.source_sha256 = hashlib.sha256(source).hexdigest()
         self.rules, self.allowlists = _compile_config(source)
 
+        # The fixed profile already supplies pyahocorasick. Keep support for
+        # installations with only the standard Gitleaks extra.
+        self._keyword_index = None
+        try:
+            import ahocorasick
+        except ImportError:
+            return
+        by_keyword = {}
+        self._always_scan = set()
+        for index, rule in enumerate(self.rules):
+            if not rule["keywords"] or "" in rule["keywords"]:
+                self._always_scan.add(index)
+            else:
+                for key in rule["keywords"]:
+                    by_keyword.setdefault(key, []).append(index)
+        if by_keyword:
+            index = ahocorasick.Automaton()
+            for key, indices in by_keyword.items():
+                index.add_word(key, tuple(indices))
+            index.make_automaton()
+            self._keyword_index = index
+
     @staticmethod
     def _allowed(
         allowlists, path, windows_path, commit, secret=None, match=None, line=None
@@ -247,6 +272,13 @@ class GitleaksSecretRecognizer(EntityRecognizer):
 
     def _candidate_rules(self, text):
         lowered = _lower(text)
+        if getattr(self, "_keyword_index", None) is not None:
+            selected = self._always_scan.copy()
+            for _, indices in self._keyword_index.iter(lowered):
+                selected.update(indices)
+            for index in sorted(selected):
+                yield self.rules[index]
+            return
         for rule in self.rules:
             if not rule["keywords"] or any(key in lowered for key in rule["keywords"]):
                 yield rule
