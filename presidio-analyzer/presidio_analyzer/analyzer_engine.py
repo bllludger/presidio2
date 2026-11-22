@@ -29,6 +29,7 @@ from presidio_analyzer.recognizer_registry import (
     RecognizerRegistry,
     RecognizerRegistryProvider,
 )
+from presidio_analyzer.scan_policy import check_scan_timeout
 from presidio_analyzer.text_normalizers import (
     NoOpTextNormalizer,
     NormalizedText,
@@ -603,6 +604,7 @@ class AnalyzerEngine:
                     if not re_compiled.search(word, timeout=REGEX_TIMEOUT_SECONDS):
                         new_results.append(result)
                 except TimeoutError:
+                    check_scan_timeout()
                     logger.warning(
                         "Allow list regex timed out after %s seconds"
                         " (word length: %d), keeping result.",

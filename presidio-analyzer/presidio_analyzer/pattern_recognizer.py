@@ -12,6 +12,7 @@ from presidio_analyzer import (
     Pattern,
     RecognizerResult,
 )
+from presidio_analyzer.scan_policy import check_scan_timeout
 
 if TYPE_CHECKING:
     from presidio_analyzer.nlp_engine import NlpArtifacts
@@ -241,11 +242,22 @@ class PatternRecognizer(LocalRecognizer):
                     score = pattern.score
 
                     validation_result = self.validate_result(current_match)
+                    if validation_result is not None:
+                        score = (
+                            EntityRecognizer.MAX_SCORE
+                            if validation_result
+                            else EntityRecognizer.MIN_SCORE
+                        )
+                    if self.invalidate_result(current_match):
+                        score = EntityRecognizer.MIN_SCORE
+                    if not score > EntityRecognizer.MIN_SCORE:
+                        continue
+
                     description = self.build_regex_explanation(
                         self.name,
                         pattern.name,
                         pattern.regex,
-                        score,
+                        pattern.score,
                         validation_result,
                         flags,
                     )
@@ -261,22 +273,10 @@ class PatternRecognizer(LocalRecognizer):
                         },
                     )
 
-                    if validation_result is not None:
-                        if validation_result:
-                            pattern_result.score = EntityRecognizer.MAX_SCORE
-                        else:
-                            pattern_result.score = EntityRecognizer.MIN_SCORE
-
-                    invalidation_result = self.invalidate_result(current_match)
-                    if invalidation_result is not None and invalidation_result:
-                        pattern_result.score = EntityRecognizer.MIN_SCORE
-
-                    if pattern_result.score > EntityRecognizer.MIN_SCORE:
-                        results.append(pattern_result)
-
-                    # Update analysis explanation score after validation or invalidation
-                    description.score = pattern_result.score
+                    description.score = score
+                    results.append(pattern_result)
             except TimeoutError:
+                check_scan_timeout()
                 logger.warning(
                     "Regex pattern '%s' timed out after %s seconds, skipping.",
                     pattern.name,

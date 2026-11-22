@@ -17,6 +17,7 @@ from presidio_analyzer.predefined_recognizers.generic.iban_patterns import (
     EOS,
     regex_per_country,
 )
+from presidio_analyzer.scan_policy import check_scan_timeout
 
 logger = logging.getLogger("presidio-analyzer")
 
@@ -198,6 +199,7 @@ class IbanRecognizer(PatternRecognizer):
                             results.append(pattern_result)
                             break
             except TimeoutError:
+                check_scan_timeout()
                 logger.warning(
                     "Regex pattern '%s' timed out after %s seconds, skipping.",
                     pattern.name,
@@ -233,6 +235,7 @@ class IbanRecognizer(PatternRecognizer):
                     country_regex, iban, flags=flags, timeout=REGEX_TIMEOUT_SECONDS
                 )
             except TimeoutError:
+                check_scan_timeout()
                 logger.warning(
                     "IBAN format validation regex timed out after %s seconds.",
                     REGEX_TIMEOUT_SECONDS,
