@@ -6,12 +6,6 @@ Presidio uses GitHub Actions workflows to validate, build, release, and deliver 
 
 The following workflows are maintained as part of the Presidio development process:
 
-- [CI](https://github.com/data-privacy-stack/presidio/blob/main/.github/workflows/ci.yml) - triggered for pull requests and merges to the main branch.
-    - Linting
-    - Dependency review
-    - Unit tests
-    - Package builds
-    - Container builds and E2E tests
 - [Release](https://github.com/data-privacy-stack/presidio/blob/main/.github/workflows/release.yml) - manually triggered for official releases.
     - Publishes Python packages to [PyPI](https://pypi.org/search/?q=presidio)
     - Publishes container images to [GitHub Container Registry](https://github.com/orgs/data-privacy-stack/packages)
@@ -25,7 +19,7 @@ Official Presidio container images are now published to GitHub Container Registr
 - [`ghcr.io/data-privacy-stack/presidio-anonymizer`](https://github.com/orgs/data-privacy-stack/packages/container/package/presidio-anonymizer)
 - [`ghcr.io/data-privacy-stack/presidio-image-redactor`](https://github.com/orgs/data-privacy-stack/packages/container/package/presidio-image-redactor)
 
-The analyzer and anonymizer are also published as distroless images in the same repositories, built from `Dockerfile.distroless` and tagged with a `-distroless` suffix (for example `presidio-analyzer:latest-distroless` and `presidio-analyzer:<release-version>-distroless`, plus per-platform `-linux-amd64` and `-linux-arm64` tags). The unsuffixed tags, including `latest`, remain the default images. There is no distroless image-redactor. CI runs the e2e tests against both the default and the distroless images.
+The analyzer and anonymizer are also published as distroless images in the same repositories, built from `Dockerfile.distroless` and tagged with a `-distroless` suffix (for example `presidio-analyzer:latest-distroless` and `presidio-analyzer:<release-version>-distroless`, plus per-platform `-linux-amd64` and `-linux-arm64` tags). The unsuffixed tags, including `latest`, remain the default images. There is no distroless image-redactor.
 The legacy Microsoft Container Registry images at `mcr.microsoft.com/presidio-*` are no longer updated. Existing MCR tags can still be pulled for older deployments, but users should update image references to GHCR before upgrading. For example:
 
 ```sh

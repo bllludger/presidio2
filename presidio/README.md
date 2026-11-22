@@ -1,6 +1,5 @@
 # Presidio
 
-[![Build Status](https://github.com/data-privacy-stack/presidio/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/data-privacy-stack/presidio/actions/workflows/ci.yml)
 [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 **Context aware, pluggable and customizable PII de-identification service for text and images.**
