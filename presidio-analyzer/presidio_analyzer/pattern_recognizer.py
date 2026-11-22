@@ -208,8 +208,10 @@ class PatternRecognizer(LocalRecognizer):
         """
         flags = flags if flags else self.global_regex_flags
         results = []
+        debug = logger.isEnabledFor(logging.DEBUG)
         for pattern in self.patterns:
-            match_start_time = datetime.datetime.now()
+            if debug:
+                match_start_time = datetime.datetime.now()
 
             # Compile regex if flags differ from flags the regex was compiled with
             if not pattern.compiled_regex or pattern.compiled_with_flags != flags:
@@ -220,12 +222,13 @@ class PatternRecognizer(LocalRecognizer):
                 matches = self._iter_pattern_matches(
                     pattern, text, REGEX_TIMEOUT_SECONDS
                 )
-                match_time = datetime.datetime.now() - match_start_time
-                logger.debug(
-                    "--- match_time[%s]: %.6f seconds",
-                    pattern.name,
-                    match_time.total_seconds(),
-                )
+                if debug:
+                    match_time = datetime.datetime.now() - match_start_time
+                    logger.debug(
+                        "--- match_time[%s]: %.6f seconds",
+                        pattern.name,
+                        match_time.total_seconds(),
+                    )
 
                 for match in matches:
                     start, end = match.span()
