@@ -1,5 +1,11 @@
 # Presidio analyzer
 
+> Это исходники RU-форка. Для используемой в LiteLLM и OpenCode сборки
+> `2.2.366+ru.mask4` следуйте инструкции staging в корневом `README.MD`.
+> Прямая сборка этой папки отличается от зафиксированного состава mask4.
+> Ниже сохранено описание возможностей исходного SDK; установка обычного
+> `presidio-analyzer` из PyPI не заменяет wheel RU-профиля.
+
 ## Description
 
 The Presidio analyzer is a Python based service for detecting PII entities in text.
