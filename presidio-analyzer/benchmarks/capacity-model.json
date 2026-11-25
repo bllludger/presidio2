@@ -1,0 +1,89 @@
+{
+  "date": "2026-11-24",
+  "rps_unit": "chat requests",
+  "target_scan_cpu_utilization": 0.7,
+  "assumptions": [
+    "cores mean equivalent measured CPU capacity, not specified cloud vCPUs",
+    "No cache hits unless explicitly named",
+    "HTTP, LiteLLM, Redis, provider, serialization, masking/restoration and redundancy excluded",
+    "70% is a planning assumption; not a measured latency guarantee",
+    "Linear sizing is a model; measured concurrent degradation requires hardware-specific calibration"
+  ],
+  "scenarios": [
+    {
+      "scenario": "Five fresh code-history blocks; about 17KB total",
+      "cpu_ms_per_chat": 15.736563333333333,
+      "targets": {
+        "200": {
+          "busy_scan_cpu_equivalents": 3.1473126666666666,
+          "scan_cpu_equivalents_at_70pct": 5
+        },
+        "1000": {
+          "busy_scan_cpu_equivalents": 15.736563333333333,
+          "scan_cpu_equivalents_at_70pct": 23
+        }
+      }
+    },
+    {
+      "scenario": "One fresh measured 8KB server block",
+      "cpu_ms_per_chat": 22.335265625,
+      "targets": {
+        "200": {
+          "busy_scan_cpu_equivalents": 4.4670531250000005,
+          "scan_cpu_equivalents_at_70pct": 7
+        },
+        "1000": {
+          "busy_scan_cpu_equivalents": 22.335265625,
+          "scan_cpu_equivalents_at_70pct": 32
+        }
+      }
+    },
+    {
+      "scenario": "One fresh measured 32KB server block",
+      "cpu_ms_per_chat": 97.66408203125,
+      "targets": {
+        "200": {
+          "busy_scan_cpu_equivalents": 19.53281640625,
+          "scan_cpu_equivalents_at_70pct": 28
+        },
+        "1000": {
+          "busy_scan_cpu_equivalents": 97.66408203125,
+          "scan_cpu_equivalents_at_70pct": 140
+        }
+      }
+    },
+    {
+      "scenario": "Five fresh measured 8KB server blocks",
+      "cpu_ms_per_chat": 111.67632812500001,
+      "targets": {
+        "200": {
+          "busy_scan_cpu_equivalents": 22.335265625000005,
+          "scan_cpu_equivalents_at_70pct": 32
+        },
+        "1000": {
+          "busy_scan_cpu_equivalents": 111.67632812500001,
+          "scan_cpu_equivalents_at_70pct": 160
+        }
+      }
+    },
+    {
+      "scenario": "Five fresh measured 32KB server blocks",
+      "cpu_ms_per_chat": 488.32041015625003,
+      "targets": {
+        "200": {
+          "busy_scan_cpu_equivalents": 97.66408203125,
+          "scan_cpu_equivalents_at_70pct": 140
+        },
+        "1000": {
+          "busy_scan_cpu_equivalents": 488.32041015625003,
+          "scan_cpu_equivalents_at_70pct": 698
+        }
+      }
+    }
+  ],
+  "source_sha256": {
+    "../litellm-presidio-port/runs/profile-cpu/local-core-comparison.json": "40e2c177539a9bb896033b00820d28b3a96436c9e1715efe66a5789cb6b99e7b",
+    "presidio-analyzer/benchmarks/capacity-chat-cost.json": "68d421525e2aefe83f6b1b54788470b0f3120cea1b2d168274750065a535b9a1",
+    "presidio-analyzer/benchmarks/capacity-current-server.json": "58b373ca0ee569bcbbb5849fcf7de8988af35966a16f3c697df994475e95b283"
+  }
+}

@@ -9,10 +9,6 @@ from presidio_analyzer.nlp_engine import (
     NerModelConfiguration,
     NlpEngine,
     NoOpNlpEngine,
-    SlimSpacyNlpEngine,
-    SpacyNlpEngine,
-    StanzaNlpEngine,
-    TransformersNlpEngine,
 )
 
 logger = logging.getLogger("presidio-analyzer")
@@ -43,6 +39,13 @@ class NlpEngineProvider:
         nlp_configuration: Optional[Dict] = None,
     ):
         if nlp_engines is None:
+            from presidio_analyzer.nlp_engine import (
+                SlimSpacyNlpEngine,
+                SpacyNlpEngine,
+                StanzaNlpEngine,
+                TransformersNlpEngine,
+            )
+
             nlp_engines = (
                 SpacyNlpEngine,
                 StanzaNlpEngine,
@@ -94,6 +97,8 @@ class NlpEngineProvider:
 
     def create_engine(self) -> NlpEngine:
         """Create an NLP engine instance."""
+        from presidio_analyzer.nlp_engine import SlimSpacyNlpEngine
+
         # Configuration is already validated by Pydantic in __init__
         nlp_engine_name = self.nlp_configuration["nlp_engine_name"]
         if nlp_engine_name not in self.nlp_engines:

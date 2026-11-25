@@ -1,5 +1,6 @@
 import copy
 import logging
+from bisect import bisect_right
 from typing import List, Optional, Set
 
 from presidio_analyzer import EntityRecognizer, RecognizerResult
@@ -285,7 +286,7 @@ class LemmaContextAwareEnhancer(ContextAwareEnhancer):
         context_list.extend(backward_context)
         context_list.extend(forward_context)
         context_list = list(set(context_list))
-        logger.debug("Context list is: %s", " ".join(context_list))
+        logger.debug("Extracted %d context words", len(context_list))
         return context_list
 
     @staticmethod
@@ -295,30 +296,17 @@ class LemmaContextAwareEnhancer(ContextAwareEnhancer):
         tokens,
         tokens_indices: List[int],
     ) -> int:
-        found = False
-        # we use the known start index of the original word to find the actual
-        # token at that index, we are not checking for equivalence since the
-        # token might be just a substring of that word (e.g. for phone number
-        # 555-124564 the first token might be just '555' or for a match like '
-        # rocket' the actual token will just be 'rocket' hence the misalignment
-        # of indices)
-        # Note: we are iterating over the original tokens (not the lemmatized)
-        i = -1
-        for i, token in enumerate(tokens, 0):
-            # Either we found a token with the exact location, or
-            # we take a token which its characters indices covers
-            # the index we are looking for.
-            if (tokens_indices[i] == start) or (start < tokens_indices[i] + len(token)):
-                # found the interesting token, the one that around it
-                # we take n words, we save the matching lemma
-                found = True
-                break
-
-        if not found:
+        # NLP tokens are ordered and non-overlapping. In a whitespace gap the
+        # original scan selects the following token, not the preceding one.
+        i = bisect_right(tokens_indices, start) - 1
+        if i < 0 or (
+            tokens_indices[i] != start and start >= tokens_indices[i] + len(tokens[i])
+        ):
+            i += 1
+        if i >= len(tokens):
             raise ValueError(
-                "Did not find word '" + word + "' "
-                "in the list of tokens although it "
-                "is expected to be found"
+                f"Did not find a token at index {start} although it is "
+                "expected to be found"
             )
         return i
 

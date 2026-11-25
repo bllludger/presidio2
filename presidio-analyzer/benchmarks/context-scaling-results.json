@@ -1,0 +1,3215 @@
+{
+  "environment": {
+    "python": "3.13.5 (main, Jun 11 2025, 15:36:57) [Clang 16.0.0 (clang-1600.0.26.6)]",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "logical_cpus": 12,
+    "dependencies": {
+      "spacy": "3.8.18",
+      "regex": "2026.9.29",
+      "google-re2": "1.1.20251105",
+      "pyahocorasick": "2.3.1",
+      "phonenumbers": "9.0.42"
+    },
+    "core_head": "a1fae8eeef2e70a6ff8fd8ff795f035696662005",
+    "port_head": "7262b868f89682e93633dcb3d6f6b1c062bbe475",
+    "dataset_sha256": {
+      "datasets/pii/ru-banking-privacy/critical-250.jsonl": "1d37d582a697e62735847074ebf4f1198e97671f81d1565d5dcce7b8b8f24316",
+      "datasets/secrets/creddetx/critical-250.jsonl": "8b9885f4e7f7677fd7be8ac6b99d2cceafe6f4c5fe9a150d1078cfeea62cd445",
+      "datasets/false-positives/curated-hard-negatives-500/cases.jsonl": "1c6526c348d8018e442741cae228705e7612572a0e59744282e999b05c156da1"
+    },
+    "core_source_sha256": "9528dd3b0f895b3f5ad3cf4ad4c404d4945b94dd42b8ad4f5b822238af844c50",
+    "port_profile_sha256": "9c275774d0eb9fb6c69475e41642d2821dd1e12e761b29a0338bfb4ba8ff02a2",
+    "workload": "labeled"
+  },
+  "input_bytes": {
+    "total": 898083,
+    "max": 75875,
+    "cases": 1000
+  },
+  "quality": {
+    "datasets": {
+      "pii": {
+        "cases": 250,
+        "cases_masked": 226,
+        "labels": 662,
+        "fully_covered": 382,
+        "exact_span": 382,
+        "partially_covered": 7,
+        "missed": 273,
+        "negative_labels": 64,
+        "negative_labels_touched": 0
+      },
+      "secrets": {
+        "cases": 250,
+        "cases_masked": 245,
+        "labels": 496,
+        "fully_covered": 389,
+        "exact_span": 384,
+        "partially_covered": 38,
+        "missed": 69,
+        "negative_labels": 658,
+        "negative_labels_touched": 67
+      },
+      "negative": {
+        "cases": 500,
+        "cases_masked": 25,
+        "negative_labels": 500,
+        "negative_labels_touched": 24,
+        "false_positive_cases": 25
+      }
+    },
+    "incomplete_labels": [
+      {
+        "dataset": "pii",
+        "case_id": "LOCAL-SYN-008",
+        "type": "BIRTH_DATE",
+        "start": 20,
+        "end": 30,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "LOCAL-SYN-068",
+        "type": "DRIVER_LICENSE",
+        "start": 23,
+        "end": 34,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "LOCAL-SYN-132",
+        "type": "HEALTH_DATA",
+        "start": 71,
+        "end": 98,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "HT-st_084",
+        "type": "FULL_NAME",
+        "start": 9,
+        "end": 15,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "HT-hr_079",
+        "type": "FULL_NAME",
+        "start": 0,
+        "end": 4,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "HT-s_auto_095",
+        "type": "FULL_NAME",
+        "start": 5,
+        "end": 12,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "HT-s_auto_060",
+        "type": "ADDRESS",
+        "start": 47,
+        "end": 69,
+        "covered_characters": 14
+      },
+      {
+        "dataset": "pii",
+        "case_id": "HT-del_025",
+        "type": "ADDRESS",
+        "start": 67,
+        "end": 75,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "HT-del_034",
+        "type": "ADDRESS",
+        "start": 40,
+        "end": 52,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "HT-del_041",
+        "type": "ADDRESS",
+        "start": 44,
+        "end": 58,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "HT-del_047",
+        "type": "ADDRESS",
+        "start": 46,
+        "end": 61,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "HT-del_051",
+        "type": "ADDRESS",
+        "start": 41,
+        "end": 48,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "HT-del_055",
+        "type": "ADDRESS",
+        "start": 29,
+        "end": 48,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "HT-del_059",
+        "type": "ADDRESS",
+        "start": 36,
+        "end": 49,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "HT-re_014",
+        "type": "ADDRESS",
+        "start": 6,
+        "end": 55,
+        "covered_characters": 42
+      },
+      {
+        "dataset": "pii",
+        "case_id": "HT-re_028",
+        "type": "ADDRESS",
+        "start": 11,
+        "end": 73,
+        "covered_characters": 35
+      },
+      {
+        "dataset": "pii",
+        "case_id": "HT-re_044",
+        "type": "ADDRESS",
+        "start": 17,
+        "end": 61,
+        "covered_characters": 37
+      },
+      {
+        "dataset": "pii",
+        "case_id": "HT-re_052",
+        "type": "ADDRESS",
+        "start": 7,
+        "end": 55,
+        "covered_characters": 29
+      },
+      {
+        "dataset": "pii",
+        "case_id": "HT-re_060",
+        "type": "ADDRESS",
+        "start": 6,
+        "end": 55,
+        "covered_characters": 42
+      },
+      {
+        "dataset": "pii",
+        "case_id": "LOCAL-SYN-082",
+        "type": "PAN_19",
+        "start": 5,
+        "end": 28,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "LOCAL-SYN-088",
+        "type": "CARDHOLDER_NAME",
+        "start": 20,
+        "end": 34,
+        "covered_characters": 6
+      },
+      {
+        "dataset": "pii",
+        "case_id": "LOCAL-SYN-089",
+        "type": "CARD_EXPIRY",
+        "start": 25,
+        "end": 30,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "LOCAL-SYN-092",
+        "type": "CARD_EXPIRY",
+        "start": 26,
+        "end": 30,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "LOCAL-SYN-093",
+        "type": "SERVICE_CODE",
+        "start": 31,
+        "end": 34,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "LOCAL-SYN-102",
+        "type": "CID",
+        "start": 34,
+        "end": 38,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "LOCAL-SYN-106",
+        "type": "PIN",
+        "start": 19,
+        "end": 23,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "LOCAL-SYN-112",
+        "type": "PIN_BLOCK",
+        "start": 31,
+        "end": 47,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "LOCAL-SYN-128",
+        "type": "CARD_EXPIRY",
+        "start": 50,
+        "end": 55,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "LOCAL-SYN-133",
+        "type": "PIN_BLOCK",
+        "start": 77,
+        "end": 93,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "HT-bank_081",
+        "type": "CVV_CVC",
+        "start": 77,
+        "end": 80,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "LOCAL-SYN-047",
+        "type": "BANK_ACCOUNT_RU",
+        "start": 24,
+        "end": 47,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "LOCAL-SYN-048",
+        "type": "BANK_ACCOUNT_RU",
+        "start": 12,
+        "end": 32,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "LOCAL-SYN-126",
+        "type": "IBAN",
+        "start": 46,
+        "end": 73,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "LOCAL-SYN-134",
+        "type": "INN_ORG",
+        "start": 28,
+        "end": 38,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-005",
+        "type": "BANK_ACCOUNT_RU",
+        "start": 101,
+        "end": 121,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-006",
+        "type": "BANK_ACCOUNT_RU",
+        "start": 108,
+        "end": 128,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-009",
+        "type": "BANK_OPERATION_ID",
+        "start": 141,
+        "end": 157,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-009",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 175,
+        "end": 200,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-009",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 219,
+        "end": 229,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-009",
+        "type": "BANK_PAYMENT_PURPOSE",
+        "start": 244,
+        "end": 276,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-010",
+        "type": "BANK_OPERATION_ID",
+        "start": 131,
+        "end": 147,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-010",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 170,
+        "end": 195,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-010",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 219,
+        "end": 226,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-010",
+        "type": "BANK_PAYMENT_PURPOSE",
+        "start": 246,
+        "end": 284,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-011",
+        "type": "BANK_OPERATION_ID",
+        "start": 107,
+        "end": 123,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-011",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 138,
+        "end": 163,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-011",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 179,
+        "end": 186,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-011",
+        "type": "BANK_PAYMENT_PURPOSE",
+        "start": 198,
+        "end": 225,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-012",
+        "type": "BANK_OPERATION_ID",
+        "start": 119,
+        "end": 135,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-012",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 151,
+        "end": 176,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-012",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 193,
+        "end": 203,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-012",
+        "type": "BANK_PAYMENT_PURPOSE",
+        "start": 216,
+        "end": 247,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-013",
+        "type": "BANK_ACCOUNT_RU",
+        "start": 68,
+        "end": 88,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-013",
+        "type": "BANK_ACCOUNT_RU",
+        "start": 111,
+        "end": 131,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-013",
+        "type": "BANK_OPERATION_ID",
+        "start": 147,
+        "end": 163,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-013",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 184,
+        "end": 209,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-013",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 231,
+        "end": 242,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-013",
+        "type": "BANK_PAYMENT_PURPOSE",
+        "start": 260,
+        "end": 296,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-014",
+        "type": "BANK_ACCOUNT_RU",
+        "start": 129,
+        "end": 149,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-014",
+        "type": "BANK_ACCOUNT_RU",
+        "start": 152,
+        "end": 172,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-014",
+        "type": "BANK_OPERATION_ID",
+        "start": 175,
+        "end": 191,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-014",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 194,
+        "end": 219,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-014",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 222,
+        "end": 230,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-014",
+        "type": "BANK_PAYMENT_PURPOSE",
+        "start": 233,
+        "end": 262,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-015",
+        "type": "BANK_OPERATION_ID",
+        "start": 159,
+        "end": 175,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-015",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 191,
+        "end": 216,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-015",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 233,
+        "end": 244,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-015",
+        "type": "BANK_PAYMENT_PURPOSE",
+        "start": 257,
+        "end": 290,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-016",
+        "type": "BANK_OPERATION_ID",
+        "start": 145,
+        "end": 161,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-016",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 179,
+        "end": 204,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-016",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 223,
+        "end": 234,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-016",
+        "type": "BANK_PAYMENT_PURPOSE",
+        "start": 249,
+        "end": 279,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-017",
+        "type": "BANK_BALANCE",
+        "start": 110,
+        "end": 122,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-017",
+        "type": "BANK_OPERATION_ID",
+        "start": 135,
+        "end": 151,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-017",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 169,
+        "end": 194,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-017",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 209,
+        "end": 220,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-017",
+        "type": "BANK_BALANCE",
+        "start": 242,
+        "end": 254,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-018",
+        "type": "BANK_BALANCE",
+        "start": 95,
+        "end": 104,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-018",
+        "type": "BANK_OPERATION_ID",
+        "start": 122,
+        "end": 138,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-018",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 161,
+        "end": 186,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-018",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 206,
+        "end": 214,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-018",
+        "type": "BANK_BALANCE",
+        "start": 241,
+        "end": 250,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-019",
+        "type": "BANK_BALANCE",
+        "start": 79,
+        "end": 88,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-019",
+        "type": "BANK_OPERATION_ID",
+        "start": 98,
+        "end": 114,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-019",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 129,
+        "end": 154,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-019",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 166,
+        "end": 174,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-019",
+        "type": "BANK_BALANCE",
+        "start": 193,
+        "end": 202,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-020",
+        "type": "BANK_BALANCE",
+        "start": 90,
+        "end": 102,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-020",
+        "type": "BANK_OPERATION_ID",
+        "start": 113,
+        "end": 129,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-020",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 145,
+        "end": 170,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-020",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 183,
+        "end": 194,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-020",
+        "type": "BANK_BALANCE",
+        "start": 214,
+        "end": 226,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-021",
+        "type": "BANK_ACCOUNT_RU",
+        "start": 69,
+        "end": 89,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-021",
+        "type": "BANK_BALANCE",
+        "start": 113,
+        "end": 125,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-021",
+        "type": "BANK_OPERATION_ID",
+        "start": 141,
+        "end": 157,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-021",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 178,
+        "end": 203,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-021",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 221,
+        "end": 232,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-021",
+        "type": "BANK_BALANCE",
+        "start": 257,
+        "end": 269,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-022",
+        "type": "BANK_ACCOUNT_RU",
+        "start": 133,
+        "end": 153,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-022",
+        "type": "BANK_BALANCE",
+        "start": 156,
+        "end": 165,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-022",
+        "type": "BANK_OPERATION_ID",
+        "start": 168,
+        "end": 184,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-022",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 187,
+        "end": 212,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-022",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 215,
+        "end": 223,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-022",
+        "type": "BANK_BALANCE",
+        "start": 226,
+        "end": 235,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-023",
+        "type": "BANK_BALANCE",
+        "start": 130,
+        "end": 142,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-023",
+        "type": "BANK_OPERATION_ID",
+        "start": 153,
+        "end": 169,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-023",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 185,
+        "end": 210,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-023",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 223,
+        "end": 234,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-023",
+        "type": "BANK_BALANCE",
+        "start": 254,
+        "end": 266,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-024",
+        "type": "BANK_BALANCE",
+        "start": 114,
+        "end": 126,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-024",
+        "type": "BANK_OPERATION_ID",
+        "start": 139,
+        "end": 155,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-024",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 173,
+        "end": 198,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-024",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 213,
+        "end": 224,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-024",
+        "type": "BANK_BALANCE",
+        "start": 246,
+        "end": 258,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-025",
+        "type": "BANK_CLIENT_ID",
+        "start": 65,
+        "end": 79,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-025",
+        "type": "CONTRACT_ID",
+        "start": 91,
+        "end": 110,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-025",
+        "type": "DEPOSIT_PRINCIPAL",
+        "start": 163,
+        "end": 175,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-025",
+        "type": "DEPOSIT_INTEREST",
+        "start": 200,
+        "end": 211,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-026",
+        "type": "BANK_CLIENT_ID",
+        "start": 45,
+        "end": 59,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-026",
+        "type": "CONTRACT_ID",
+        "start": 76,
+        "end": 95,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-026",
+        "type": "DEPOSIT_PRINCIPAL",
+        "start": 158,
+        "end": 167,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-026",
+        "type": "DEPOSIT_INTEREST",
+        "start": 197,
+        "end": 205,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-027",
+        "type": "BANK_CLIENT_ID",
+        "start": 37,
+        "end": 51,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-027",
+        "type": "CONTRACT_ID",
+        "start": 60,
+        "end": 79,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-027",
+        "type": "DEPOSIT_PRINCIPAL",
+        "start": 126,
+        "end": 135,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-027",
+        "type": "DEPOSIT_INTEREST",
+        "start": 157,
+        "end": 165,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-028",
+        "type": "BANK_CLIENT_ID",
+        "start": 47,
+        "end": 61,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-028",
+        "type": "CONTRACT_ID",
+        "start": 71,
+        "end": 90,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-028",
+        "type": "DEPOSIT_PRINCIPAL",
+        "start": 139,
+        "end": 151,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-028",
+        "type": "DEPOSIT_INTEREST",
+        "start": 174,
+        "end": 185,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-029",
+        "type": "BANK_CLIENT_ID",
+        "start": 65,
+        "end": 79,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-029",
+        "type": "CONTRACT_ID",
+        "start": 94,
+        "end": 113,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-029",
+        "type": "BANK_ACCOUNT_RU",
+        "start": 132,
+        "end": 152,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-029",
+        "type": "DEPOSIT_PRINCIPAL",
+        "start": 172,
+        "end": 184,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-029",
+        "type": "DEPOSIT_INTEREST",
+        "start": 212,
+        "end": 223,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-030",
+        "type": "BANK_CLIENT_ID",
+        "start": 116,
+        "end": 130,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-030",
+        "type": "CONTRACT_ID",
+        "start": 133,
+        "end": 152,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-030",
+        "type": "BANK_ACCOUNT_RU",
+        "start": 155,
+        "end": 175,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-030",
+        "type": "DEPOSIT_PRINCIPAL",
+        "start": 178,
+        "end": 187,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-030",
+        "type": "DEPOSIT_INTEREST",
+        "start": 190,
+        "end": 198,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-031",
+        "type": "BANK_CLIENT_ID",
+        "start": 87,
+        "end": 101,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-031",
+        "type": "CONTRACT_ID",
+        "start": 111,
+        "end": 130,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-031",
+        "type": "DEPOSIT_PRINCIPAL",
+        "start": 179,
+        "end": 191,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-031",
+        "type": "DEPOSIT_INTEREST",
+        "start": 214,
+        "end": 225,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-032",
+        "type": "BANK_CLIENT_ID",
+        "start": 69,
+        "end": 83,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-032",
+        "type": "CONTRACT_ID",
+        "start": 95,
+        "end": 114,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-032",
+        "type": "DEPOSIT_PRINCIPAL",
+        "start": 167,
+        "end": 179,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-032",
+        "type": "DEPOSIT_INTEREST",
+        "start": 204,
+        "end": 215,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-033",
+        "type": "BANK_CLIENT_ID",
+        "start": 75,
+        "end": 89,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-033",
+        "type": "CONTRACT_ID",
+        "start": 101,
+        "end": 120,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-033",
+        "type": "LOAN_OUTSTANDING",
+        "start": 175,
+        "end": 187,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-033",
+        "type": "LOAN_INSTALLMENT",
+        "start": 208,
+        "end": 219,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-033",
+        "type": "LOAN_PAYMENT_DATE",
+        "start": 236,
+        "end": 246,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-034",
+        "type": "BANK_CLIENT_ID",
+        "start": 55,
+        "end": 69,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-034",
+        "type": "CONTRACT_ID",
+        "start": 86,
+        "end": 105,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-034",
+        "type": "LOAN_OUTSTANDING",
+        "start": 170,
+        "end": 179,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-034",
+        "type": "LOAN_INSTALLMENT",
+        "start": 205,
+        "end": 213,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-034",
+        "type": "LOAN_PAYMENT_DATE",
+        "start": 235,
+        "end": 245,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-035",
+        "type": "BANK_CLIENT_ID",
+        "start": 47,
+        "end": 61,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-035",
+        "type": "CONTRACT_ID",
+        "start": 70,
+        "end": 89,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-035",
+        "type": "LOAN_OUTSTANDING",
+        "start": 138,
+        "end": 147,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-035",
+        "type": "LOAN_INSTALLMENT",
+        "start": 165,
+        "end": 173,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-035",
+        "type": "LOAN_PAYMENT_DATE",
+        "start": 187,
+        "end": 197,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-036",
+        "type": "BANK_CLIENT_ID",
+        "start": 57,
+        "end": 71,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-036",
+        "type": "CONTRACT_ID",
+        "start": 81,
+        "end": 100,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-036",
+        "type": "LOAN_OUTSTANDING",
+        "start": 151,
+        "end": 163,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-036",
+        "type": "LOAN_INSTALLMENT",
+        "start": 182,
+        "end": 193,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-036",
+        "type": "LOAN_PAYMENT_DATE",
+        "start": 208,
+        "end": 218,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-037",
+        "type": "BANK_CLIENT_ID",
+        "start": 75,
+        "end": 89,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-037",
+        "type": "CONTRACT_ID",
+        "start": 104,
+        "end": 123,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-037",
+        "type": "BANK_ACCOUNT_RU",
+        "start": 143,
+        "end": 163,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-037",
+        "type": "LOAN_OUTSTANDING",
+        "start": 184,
+        "end": 196,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-037",
+        "type": "LOAN_INSTALLMENT",
+        "start": 220,
+        "end": 231,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-037",
+        "type": "LOAN_PAYMENT_DATE",
+        "start": 251,
+        "end": 261,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-038",
+        "type": "BANK_CLIENT_ID",
+        "start": 127,
+        "end": 141,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-038",
+        "type": "CONTRACT_ID",
+        "start": 144,
+        "end": 163,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-038",
+        "type": "BANK_ACCOUNT_RU",
+        "start": 166,
+        "end": 186,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-038",
+        "type": "LOAN_OUTSTANDING",
+        "start": 189,
+        "end": 198,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-038",
+        "type": "LOAN_INSTALLMENT",
+        "start": 201,
+        "end": 209,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-038",
+        "type": "LOAN_PAYMENT_DATE",
+        "start": 212,
+        "end": 222,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-039",
+        "type": "BANK_CLIENT_ID",
+        "start": 97,
+        "end": 111,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-039",
+        "type": "CONTRACT_ID",
+        "start": 121,
+        "end": 140,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-039",
+        "type": "LOAN_OUTSTANDING",
+        "start": 191,
+        "end": 203,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-039",
+        "type": "LOAN_INSTALLMENT",
+        "start": 222,
+        "end": 233,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-039",
+        "type": "LOAN_PAYMENT_DATE",
+        "start": 248,
+        "end": 258,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-040",
+        "type": "BANK_CLIENT_ID",
+        "start": 79,
+        "end": 93,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-040",
+        "type": "CONTRACT_ID",
+        "start": 105,
+        "end": 124,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-040",
+        "type": "LOAN_OUTSTANDING",
+        "start": 179,
+        "end": 191,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-040",
+        "type": "LOAN_INSTALLMENT",
+        "start": 212,
+        "end": 223,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-040",
+        "type": "LOAN_PAYMENT_DATE",
+        "start": 240,
+        "end": 250,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-041",
+        "type": "PAYMENT_ORDER_ID",
+        "start": 152,
+        "end": 167,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-041",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 185,
+        "end": 210,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-041",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 229,
+        "end": 240,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-041",
+        "type": "BANK_PAYMENT_PURPOSE",
+        "start": 255,
+        "end": 287,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-042",
+        "type": "PAYMENT_ORDER_ID",
+        "start": 142,
+        "end": 157,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-042",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 180,
+        "end": 205,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-042",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 229,
+        "end": 237,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-042",
+        "type": "BANK_PAYMENT_PURPOSE",
+        "start": 257,
+        "end": 295,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-043",
+        "type": "PAYMENT_ORDER_ID",
+        "start": 118,
+        "end": 133,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-043",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 148,
+        "end": 173,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-043",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 189,
+        "end": 197,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-043",
+        "type": "BANK_PAYMENT_PURPOSE",
+        "start": 209,
+        "end": 236,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-044",
+        "type": "PAYMENT_ORDER_ID",
+        "start": 130,
+        "end": 145,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-044",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 161,
+        "end": 186,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-044",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 203,
+        "end": 214,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-044",
+        "type": "BANK_PAYMENT_PURPOSE",
+        "start": 227,
+        "end": 258,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-045",
+        "type": "BANK_ACCOUNT_RU",
+        "start": 72,
+        "end": 92,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-045",
+        "type": "BANK_ACCOUNT_RU",
+        "start": 115,
+        "end": 135,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-045",
+        "type": "PAYMENT_ORDER_ID",
+        "start": 158,
+        "end": 173,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-045",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 194,
+        "end": 219,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-045",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 241,
+        "end": 252,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-045",
+        "type": "BANK_PAYMENT_PURPOSE",
+        "start": 270,
+        "end": 306,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-046",
+        "type": "BANK_ACCOUNT_RU",
+        "start": 136,
+        "end": 156,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-046",
+        "type": "BANK_ACCOUNT_RU",
+        "start": 159,
+        "end": 179,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-046",
+        "type": "PAYMENT_ORDER_ID",
+        "start": 182,
+        "end": 197,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-046",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 200,
+        "end": 225,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-046",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 228,
+        "end": 236,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-046",
+        "type": "BANK_PAYMENT_PURPOSE",
+        "start": 239,
+        "end": 268,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-047",
+        "type": "PAYMENT_ORDER_ID",
+        "start": 170,
+        "end": 185,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-047",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 201,
+        "end": 226,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-047",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 243,
+        "end": 254,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-047",
+        "type": "BANK_PAYMENT_PURPOSE",
+        "start": 267,
+        "end": 300,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-048",
+        "type": "PAYMENT_ORDER_ID",
+        "start": 156,
+        "end": 171,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-048",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 189,
+        "end": 214,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-048",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 233,
+        "end": 244,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-048",
+        "type": "BANK_PAYMENT_PURPOSE",
+        "start": 259,
+        "end": 289,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-049",
+        "type": "BANK_CLIENT_ID",
+        "start": 72,
+        "end": 86,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-049",
+        "type": "BANK_OPERATION_ID",
+        "start": 136,
+        "end": 152,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-049",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 170,
+        "end": 195,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-049",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 218,
+        "end": 229,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-049",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 248,
+        "end": 259,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-050",
+        "type": "BANK_CLIENT_ID",
+        "start": 52,
+        "end": 66,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-050",
+        "type": "BANK_OPERATION_ID",
+        "start": 126,
+        "end": 142,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-050",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 165,
+        "end": 190,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-050",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 218,
+        "end": 226,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-050",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 250,
+        "end": 258,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-051",
+        "type": "BANK_CLIENT_ID",
+        "start": 44,
+        "end": 58,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-051",
+        "type": "BANK_OPERATION_ID",
+        "start": 102,
+        "end": 118,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-051",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 133,
+        "end": 158,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-051",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 178,
+        "end": 186,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-051",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 202,
+        "end": 210,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-052",
+        "type": "BANK_CLIENT_ID",
+        "start": 54,
+        "end": 68,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-052",
+        "type": "BANK_OPERATION_ID",
+        "start": 114,
+        "end": 130,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-052",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 146,
+        "end": 171,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-052",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 192,
+        "end": 203,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-052",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 220,
+        "end": 231,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-053",
+        "type": "BANK_CLIENT_ID",
+        "start": 72,
+        "end": 86,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-053",
+        "type": "BANK_ACCOUNT_RU",
+        "start": 106,
+        "end": 126,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-053",
+        "type": "BANK_OPERATION_ID",
+        "start": 142,
+        "end": 158,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-053",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 179,
+        "end": 204,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-053",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 230,
+        "end": 241,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-053",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 263,
+        "end": 274,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-054",
+        "type": "BANK_CLIENT_ID",
+        "start": 132,
+        "end": 146,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-054",
+        "type": "BANK_ACCOUNT_RU",
+        "start": 149,
+        "end": 169,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-054",
+        "type": "BANK_OPERATION_ID",
+        "start": 172,
+        "end": 188,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-054",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 191,
+        "end": 216,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-054",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 219,
+        "end": 227,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-054",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 230,
+        "end": 238,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-055",
+        "type": "BANK_CLIENT_ID",
+        "start": 94,
+        "end": 108,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-055",
+        "type": "BANK_OPERATION_ID",
+        "start": 154,
+        "end": 170,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-055",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 186,
+        "end": 211,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-055",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 232,
+        "end": 243,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-055",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 260,
+        "end": 271,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-056",
+        "type": "BANK_CLIENT_ID",
+        "start": 76,
+        "end": 90,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-056",
+        "type": "BANK_OPERATION_ID",
+        "start": 140,
+        "end": 156,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-056",
+        "type": "BANK_OPERATION_DATETIME",
+        "start": 174,
+        "end": 199,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-056",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 222,
+        "end": 233,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-056",
+        "type": "BANK_OPERATION_AMOUNT",
+        "start": 252,
+        "end": 263,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-057",
+        "type": "CONTRACT_ID",
+        "start": 182,
+        "end": 201,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-058",
+        "type": "CONTRACT_ID",
+        "start": 177,
+        "end": 196,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-059",
+        "type": "CONTRACT_ID",
+        "start": 145,
+        "end": 164,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-060",
+        "type": "CONTRACT_ID",
+        "start": 158,
+        "end": 177,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-061",
+        "type": "BANK_ACCOUNT_RU",
+        "start": 109,
+        "end": 129,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-061",
+        "type": "BANK_ACCOUNT_RU",
+        "start": 156,
+        "end": 176,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-061",
+        "type": "CONTRACT_ID",
+        "start": 191,
+        "end": 210,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-062",
+        "type": "BANK_ACCOUNT_RU",
+        "start": 127,
+        "end": 147,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-062",
+        "type": "BANK_ACCOUNT_RU",
+        "start": 150,
+        "end": 170,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-062",
+        "type": "CONTRACT_ID",
+        "start": 173,
+        "end": 192,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-063",
+        "type": "CONTRACT_ID",
+        "start": 198,
+        "end": 217,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "pii",
+        "case_id": "BANK-064",
+        "type": "CONTRACT_ID",
+        "start": 186,
+        "end": 205,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00540",
+        "type": "PASSWORD",
+        "start": 533,
+        "end": 539,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02814",
+        "type": "PASSWORD",
+        "start": 870,
+        "end": 879,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00662",
+        "type": "ACCESS_TOKEN",
+        "start": 639,
+        "end": 828,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01477",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 1316,
+        "end": 1391,
+        "covered_characters": 19
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01477",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 1442,
+        "end": 1517,
+        "covered_characters": 19
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00629",
+        "type": "CLOUD_CREDENTIAL",
+        "start": 771,
+        "end": 811,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02045",
+        "type": "CLOUD_CREDENTIAL",
+        "start": 349,
+        "end": 437,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01521",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 318,
+        "end": 333,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02205",
+        "type": "CLOUD_CREDENTIAL",
+        "start": 107,
+        "end": 195,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02523",
+        "type": "CLOUD_CREDENTIAL",
+        "start": 42,
+        "end": 130,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01307",
+        "type": "CLOUD_CREDENTIAL",
+        "start": 141,
+        "end": 477,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00187",
+        "type": "CLOUD_CREDENTIAL",
+        "start": 286,
+        "end": 611,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01103",
+        "type": "ACCESS_TOKEN",
+        "start": 266,
+        "end": 479,
+        "covered_characters": 36
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00707",
+        "type": "PASSWORD",
+        "start": 380,
+        "end": 394,
+        "covered_characters": 13
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00586",
+        "type": "PASSWORD",
+        "start": 2331,
+        "end": 2351,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02108",
+        "type": "API_KEY",
+        "start": 326,
+        "end": 358,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00104",
+        "type": "ACCESS_TOKEN",
+        "start": 67,
+        "end": 262,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00626",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 371,
+        "end": 388,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02077",
+        "type": "PASSWORD",
+        "start": 235,
+        "end": 247,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02598",
+        "type": "PASSWORD",
+        "start": 2456,
+        "end": 2477,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01287",
+        "type": "PASSWORD",
+        "start": 72,
+        "end": 85,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00083",
+        "type": "WEBHOOK_SECRET",
+        "start": 143,
+        "end": 183,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01068",
+        "type": "PASSWORD",
+        "start": 2886,
+        "end": 2895,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01797",
+        "type": "PASSWORD",
+        "start": 265,
+        "end": 271,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00417",
+        "type": "PASSWORD",
+        "start": 328,
+        "end": 345,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00748",
+        "type": "PASSWORD",
+        "start": 155,
+        "end": 162,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02141",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 298,
+        "end": 366,
+        "covered_characters": 43
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02584",
+        "type": "API_KEY",
+        "start": 191,
+        "end": 223,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00282",
+        "type": "SESSION_SECRET",
+        "start": 111,
+        "end": 161,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00740",
+        "type": "API_KEY",
+        "start": 682,
+        "end": 714,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01672",
+        "type": "ENCRYPTION_KEY",
+        "start": 42,
+        "end": 86,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02633",
+        "type": "ENCRYPTION_KEY",
+        "start": 410,
+        "end": 454,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00214",
+        "type": "ENCRYPTION_KEY",
+        "start": 392,
+        "end": 436,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01337",
+        "type": "API_KEY",
+        "start": 158,
+        "end": 195,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01337",
+        "type": "GENERIC_SECRET",
+        "start": 1213,
+        "end": 1249,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02492",
+        "type": "ENCRYPTION_KEY",
+        "start": 640,
+        "end": 704,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00313",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 1115,
+        "end": 1190,
+        "covered_characters": 42
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01282",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 484,
+        "end": 541,
+        "covered_characters": 17
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02143",
+        "type": "ENCRYPTION_KEY",
+        "start": 145,
+        "end": 189,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02143",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 228,
+        "end": 305,
+        "covered_characters": 41
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00406",
+        "type": "PASSWORD",
+        "start": 195,
+        "end": 204,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01639",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 170,
+        "end": 182,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01788",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 81,
+        "end": 154,
+        "covered_characters": 39
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01887",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 168,
+        "end": 246,
+        "covered_characters": 42
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01124",
+        "type": "PASSWORD",
+        "start": 202,
+        "end": 211,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01124",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 228,
+        "end": 321,
+        "covered_characters": 56
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00706",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 185,
+        "end": 250,
+        "covered_characters": 39
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00706",
+        "type": "ACCESS_TOKEN",
+        "start": 440,
+        "end": 462,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00414",
+        "type": "PASSWORD",
+        "start": 413,
+        "end": 434,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01537",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 63,
+        "end": 126,
+        "covered_characters": 45
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01388",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 149,
+        "end": 229,
+        "covered_characters": 45
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02851",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 677,
+        "end": 756,
+        "covered_characters": 11
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02992",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 18,
+        "end": 73,
+        "covered_characters": 19
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02846",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 562,
+        "end": 672,
+        "covered_characters": 51
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01489",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 126,
+        "end": 196,
+        "covered_characters": 9
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01489",
+        "type": "ACCESS_TOKEN",
+        "start": 233,
+        "end": 266,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00332",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 177,
+        "end": 278,
+        "covered_characters": 28
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02202",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 180,
+        "end": 234,
+        "covered_characters": 12
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02946",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 498,
+        "end": 608,
+        "covered_characters": 42
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02790",
+        "type": "PASSWORD",
+        "start": 61,
+        "end": 79,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02790",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 96,
+        "end": 182,
+        "covered_characters": 19
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00090",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 202,
+        "end": 276,
+        "covered_characters": 45
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01593",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 3880,
+        "end": 3942,
+        "covered_characters": 11
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01708",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 586,
+        "end": 661,
+        "covered_characters": 42
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02498",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 66,
+        "end": 139,
+        "covered_characters": 31
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02996",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 74,
+        "end": 163,
+        "covered_characters": 44
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02196",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 145,
+        "end": 221,
+        "covered_characters": 44
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02196",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 261,
+        "end": 337,
+        "covered_characters": 44
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00367",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 379,
+        "end": 488,
+        "covered_characters": 47
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02314",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 30,
+        "end": 137,
+        "covered_characters": 22
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00148",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 96,
+        "end": 172,
+        "covered_characters": 20
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00148",
+        "type": "GENERIC_SECRET",
+        "start": 782,
+        "end": 825,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00148",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 989,
+        "end": 1065,
+        "covered_characters": 20
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00265",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 1196,
+        "end": 1267,
+        "covered_characters": 19
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00691",
+        "type": "PASSWORD",
+        "start": 333,
+        "end": 341,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01841",
+        "type": "API_KEY",
+        "start": 3282,
+        "end": 3314,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01761",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 324,
+        "end": 340,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01761",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 1273,
+        "end": 1289,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02208",
+        "type": "ACCESS_TOKEN",
+        "start": 1490,
+        "end": 1503,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01611",
+        "type": "ACCESS_TOKEN",
+        "start": 1375,
+        "end": 1412,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01058",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 189,
+        "end": 201,
+        "covered_characters": 11
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02595",
+        "type": "PASSWORD",
+        "start": 174,
+        "end": 179,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02595",
+        "type": "PASSWORD",
+        "start": 201,
+        "end": 206,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02595",
+        "type": "PASSWORD",
+        "start": 543,
+        "end": 548,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01276",
+        "type": "API_KEY",
+        "start": 130,
+        "end": 166,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01276",
+        "type": "API_KEY",
+        "start": 271,
+        "end": 307,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01509",
+        "type": "PASSWORD",
+        "start": 145,
+        "end": 149,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01509",
+        "type": "PASSWORD",
+        "start": 332,
+        "end": 336,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02041",
+        "type": "ACCESS_TOKEN",
+        "start": 610,
+        "end": 842,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02014",
+        "type": "SESSION_SECRET",
+        "start": 162,
+        "end": 212,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02014",
+        "type": "PASSWORD",
+        "start": 244,
+        "end": 264,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02447",
+        "type": "GENERIC_SECRET",
+        "start": 155,
+        "end": 186,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01937",
+        "type": "PASSWORD",
+        "start": 153,
+        "end": 175,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01937",
+        "type": "PASSWORD",
+        "start": 944,
+        "end": 966,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-02418",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 184,
+        "end": 244,
+        "covered_characters": 10
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00865",
+        "type": "PASSWORD",
+        "start": 436,
+        "end": 462,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00471",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 348,
+        "end": 423,
+        "covered_characters": 34
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01717",
+        "type": "WEBHOOK_SECRET",
+        "start": 1293,
+        "end": 1333,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00759",
+        "type": "PASSWORD",
+        "start": 1218,
+        "end": 1222,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00759",
+        "type": "PASSWORD",
+        "start": 1292,
+        "end": 1296,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00874",
+        "type": "API_KEY",
+        "start": 179,
+        "end": 211,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-00499",
+        "type": "PASSWORD",
+        "start": 214,
+        "end": 224,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01474",
+        "type": "ACCESS_TOKEN",
+        "start": 256,
+        "end": 392,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01334",
+        "type": "WEBHOOK_SECRET",
+        "start": 513,
+        "end": 553,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01053",
+        "type": "DATABASE_CREDENTIAL",
+        "start": 103,
+        "end": 167,
+        "covered_characters": 10
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01053",
+        "type": "PASSWORD",
+        "start": 1155,
+        "end": 1165,
+        "covered_characters": 0
+      },
+      {
+        "dataset": "secrets",
+        "case_id": "cdx-v01-01809",
+        "type": "API_KEY",
+        "start": 341,
+        "end": 373,
+        "covered_characters": 0
+      }
+    ]
+  },
+  "scaling": [
+    {
+      "workers": 1,
+      "cases": 3000,
+      "startup_seconds": 1.0886066667735577,
+      "elapsed_seconds": 6.614962166175246,
+      "blocks_per_second": 453.5173330756315,
+      "cpu_ms_per_block": 2.179586333333334,
+      "cpu_seconds": 6.5387590000000015,
+      "scan_wall_p95_ms": 8.043375331908464,
+      "scan_wall_p99_ms": 26.99408307671547,
+      "batch_queue_p95_ms": 6555.761416442692,
+      "mismatches": 0
+    },
+    {
+      "workers": 2,
+      "cases": 3000,
+      "startup_seconds": 1.1411995831876993,
+      "elapsed_seconds": 3.437633666675538,
+      "blocks_per_second": 872.6933381767918,
+      "cpu_ms_per_block": 2.260282000000008,
+      "cpu_seconds": 6.780846000000024,
+      "scan_wall_p95_ms": 8.263208903372288,
+      "scan_wall_p99_ms": 27.54454081878066,
+      "batch_queue_p95_ms": 3407.6111670583487,
+      "mismatches": 0
+    },
+    {
+      "workers": 5,
+      "cases": 3000,
+      "startup_seconds": 1.254413917195052,
+      "elapsed_seconds": 1.666254541836679,
+      "blocks_per_second": 1800.4452049043841,
+      "cpu_ms_per_block": 2.5745809999999976,
+      "cpu_seconds": 7.723742999999993,
+      "scan_wall_p95_ms": 9.039417374879122,
+      "scan_wall_p99_ms": 34.791458863765,
+      "batch_queue_p95_ms": 1544.3689171224833,
+      "mismatches": 0
+    },
+    {
+      "workers": 10,
+      "cases": 3000,
+      "startup_seconds": 1.7348726247437298,
+      "elapsed_seconds": 1.1448241248726845,
+      "blocks_per_second": 2620.4898506428917,
+      "cpu_ms_per_block": 3.341105666666667,
+      "cpu_seconds": 10.023317,
+      "scan_wall_p95_ms": 12.127500027418137,
+      "scan_wall_p99_ms": 41.54087509959936,
+      "batch_queue_p95_ms": 1007.9095000401139,
+      "mismatches": 0
+    }
+  ],
+  "scope": "Local spawned workers; uncached Detector calls; no HTTP/Redis/LLM. Finite queued batch, not steady-state open-loop RPS. Labels may be incomplete."
+}

@@ -10,9 +10,6 @@ from presidio_analyzer import EntityRecognizer, PatternRecognizer
 from presidio_analyzer.nlp_engine import (
     NlpEngine,
     NoOpNlpEngine,
-    SpacyNlpEngine,
-    StanzaNlpEngine,
-    TransformersNlpEngine,
 )
 from presidio_analyzer.predefined_recognizers import (
     SpacyRecognizer,
@@ -167,6 +164,11 @@ class RecognizerRegistry:
         nlp_engine: NlpEngine,
     ) -> Type[SpacyRecognizer]:
         """Return the recognizer leveraging the selected NLP Engine."""
+        from presidio_analyzer.nlp_engine import (
+            SpacyNlpEngine,
+            StanzaNlpEngine,
+            TransformersNlpEngine,
+        )
 
         if isinstance(nlp_engine, StanzaNlpEngine):
             return StanzaRecognizer

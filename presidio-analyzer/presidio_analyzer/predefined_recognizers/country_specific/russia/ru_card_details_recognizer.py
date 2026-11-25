@@ -43,6 +43,8 @@ class RuCardExpiryRecognizer(_RuLabelledCardField):
     Cardholder-data classification: https://www.pcisecuritystandards.org/faqs/1222/
     MM/YY and MM/YYYY (also dots/hyphens) are format heuristics, not a check
     of card validity. Expired dates remain sensitive and are not discarded.
+    YYYY-MM is accepted only with a card-specific label, not a generic expiry
+    date which could describe a document or software release.
     No checksum, current-date dependency or confidence 1.0 promotion is used.
     """
 
@@ -59,7 +61,13 @@ class RuCardExpiryRecognizer(_RuLabelledCardField):
             rf"(?<=\b{_LABEL}{_JOIN})(?:0[1-9]|1[0-2]){_H}{{0,3}}"
             rf"[/.-]{_H}{{0,3}}(?:20[0-9]{{2}}|[0-9]{{2}})(?![\w/-]|\.[0-9])",
             0.4,
-        )
+        ),
+        Pattern(
+            "Explicit card expiry year-month (medium)",
+            rf"(?<=\b(?:card_expiry|срок{_H}{{1,3}}действия{_H}{{1,3}}карты){_JOIN})"
+            r"20[0-9]{2}-(?:0[1-9]|1[0-2])(?![\w/-]|\.[0-9])",
+            0.4,
+        ),
     ]
     CONTEXT = ["карта", "card", "expiry", "exp", "card_expiry"]
 

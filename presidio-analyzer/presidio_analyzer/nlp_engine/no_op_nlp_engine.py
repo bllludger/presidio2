@@ -1,9 +1,6 @@
 import logging
 from typing import Any, Dict, Iterable, Iterator, List, Tuple, Union
 
-from spacy.tokens import Doc
-from spacy.vocab import Vocab
-
 from presidio_analyzer.nlp_engine import NlpArtifacts, NlpEngine
 
 logger = logging.getLogger("presidio-analyzer")
@@ -27,6 +24,8 @@ class NoOpNlpEngine(NlpEngine):
         self,
         models: List[Dict[str, str]],
     ):
+        from spacy.vocab import Vocab
+
         self.models = self._validate_models(models)
         self._vocab = Vocab()
         self.nlp = None
@@ -157,6 +156,8 @@ class NoOpNlpEngine(NlpEngine):
         return value
 
     def _create_empty_nlp_artifacts(self, language: str) -> NlpArtifacts:
+        from spacy.tokens import Doc
+
         return NlpArtifacts(
             entities=[],
             tokens=Doc(self._vocab, words=[]),

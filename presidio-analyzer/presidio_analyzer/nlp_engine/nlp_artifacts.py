@@ -1,7 +1,7 @@
 import json
 from typing import List, Optional
 
-from spacy.tokens import Doc, Span
+from . import _spacy_types
 
 
 class NlpArtifacts:
@@ -22,8 +22,8 @@ class NlpArtifacts:
 
     def __init__(
         self,
-        entities: List[Span],
-        tokens: Doc,
+        entities: "List[_spacy_types.Span]",
+        tokens: "_spacy_types.Doc",
         tokens_indices: List[int],
         lemmas: List[str],
         nlp_engine: "NlpEngine",  # noqa: F821
@@ -86,3 +86,8 @@ class NlpArtifacts:
             return_dict["scores"] = [float(score) for score in self.scores]
 
         return json.dumps(return_dict)
+
+
+# Preserve explicit imports of the historically re-exported spaCy types.
+def __getattr__(name):
+    return getattr(_spacy_types, name)

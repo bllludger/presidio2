@@ -468,6 +468,32 @@ class AnalyzerEngine:
         """
         results = []
 
+        if recognizers and all(
+            getattr(recognizer.enhance_using_context, "__func__", None)
+            is EntityRecognizer.enhance_using_context
+            for recognizer in recognizers
+        ):
+            # Built-in no-op hooks need neither repeated partitions nor an
+            # all-other-results list. Preserve recognizer and finding order.
+            by_recognizer = {}
+            for result in raw_results:
+                key = result.recognition_metadata[
+                    RecognizerResult.RECOGNIZER_IDENTIFIER_KEY
+                ]
+                by_recognizer.setdefault(key, []).append(result)
+            results = [
+                result
+                for recognizer in recognizers
+                for result in by_recognizer.get(recognizer.id, ())
+            ]
+            return self.context_aware_enhancer.enhance_using_context(
+                text=text,
+                raw_results=results,
+                nlp_artifacts=nlp_artifacts,
+                recognizers=recognizers,
+                context=context,
+            )
+
         for recognizer in recognizers:
             recognizer_results = [
                 r

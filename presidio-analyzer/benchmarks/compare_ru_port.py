@@ -1,5 +1,6 @@
 """Compare two RU builds using a direct Detector or native Gitleaks call."""
 
+import argparse
 import contextlib
 import json
 import math
@@ -63,10 +64,6 @@ def worker():
         Path(sys.argv[2]).resolve()
         in Path(sys.modules["presidio_analyzer"].__file__).resolve().parents
     )
-    assert any(
-        getattr(r, "_without_dictionary", None) is not None
-        for r in detector.engine.registry.recognizers
-    )
     detector.detect({"text": "Тестовый контакт example@example.com"})
     data = list(cases())
     try:
@@ -87,9 +84,11 @@ def worker():
         print(json.dumps([result, elapsed, latency]), flush=True)
 
 
-def run(old, new):
+def run(old, new, repeats=3, expected_changes=None):
     """Alternate two isolated Python processes and verify every result."""
     times = {}
+    expected_changes = {row["index"]: row for row in expected_changes or []}
+    observed_changes = set()
     with contextlib.ExitStack() as stack:
         children = []
         sizes = {}
@@ -121,23 +120,41 @@ def run(old, new):
             stack.enter_context(p)
             stack.callback(p.stdin.close)
             children.append(p)
-        for i, (group, text) in enumerate(cases()):
+        data = list(cases())
+        for i in range(len(data) * repeats):
+            group, text = data[i % len(data)]
             sizes[group] = sizes.get(group, 0) + len(text.encode())
             pair = [None, None]
             for n in (i % 2, 1 - i % 2):
                 p = children[n]
-                print(i, file=p.stdin, flush=True)
+                print(i % len(data), file=p.stdin, flush=True)
                 pair[n] = json.loads(p.stdout.readline())
             if pair[0][0] != pair[1][0]:
-                raise AssertionError(
-                    f"Different masking ranges for {group}, input index {i}"
-                )
+                index = i % len(data)
+                expected = expected_changes.get(index)
+                if expected != {
+                    "index": index,
+                    "group": group,
+                    "before": pair[0][0],
+                    "after": pair[1][0],
+                }:
+                    raise AssertionError(
+                        f"Unreviewed masking ranges for {group}, input index {index}"
+                    )
+                observed_changes.add(index)
             dest = times.setdefault(group, [[], []])
             for n in range(2):
                 dest[n].append(pair[n][1:])
+    if observed_changes != set(expected_changes):
+        raise AssertionError("Expected detection changes were not observed")
     result = {}
     for group, samples in times.items():
-        result[group] = {"inputs": len(samples[0])}
+        result[group] = {
+            "inputs": len(samples[0]),
+            "reviewed_changed_inputs": sum(
+                row["group"] == group for row in expected_changes.values()
+            ),
+        }
         for label, records in zip(("before", "fork"), samples):
             row, wall = zip(*records)
             result[group][label] = {
@@ -157,4 +174,17 @@ if __name__ == "__main__":
     if sys.argv[1] == "worker":
         worker()
     else:
-        run(*sys.argv[1:])
+        parser = argparse.ArgumentParser(description=__doc__)
+        parser.add_argument("old")
+        parser.add_argument("new")
+        parser.add_argument("--repeats", type=int, default=3)
+        parser.add_argument("--expected-changes", type=Path)
+        args = parser.parse_args()
+        if args.repeats < 1:
+            parser.error("repeats must be positive")
+        changes = (
+            json.loads(args.expected_changes.read_text())
+            if args.expected_changes
+            else None
+        )
+        run(args.old, args.new, args.repeats, changes)

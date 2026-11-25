@@ -1,0 +1,663 @@
+{
+  "scope": "Same-machine direct Detector baseline, one worker; no HTTP, Redis, LLM, load saturation, total deadline or portable environment claims. Rules unchanged by this task.",
+  "manifest_sha256": "62dcc8b25971bf8279bebc7d5d57b554271b680229cc1f965ff6034086dce6bf",
+  "snapshot": ".baselines/2026-11-24-task1-v2",
+  "cpu_model": "Apple M3 Pro",
+  "logical_cpus": 12,
+  "frozen_files": 480,
+  "dependency_distributions": 75,
+  "corpora": {
+    "negatives": {
+      "sha256": "1c6526c348d8018e442741cae228705e7612572a0e59744282e999b05c156da1",
+      "cases": 500,
+      "distinct_texts": 500,
+      "characters": 39651,
+      "utf8_bytes": 41420,
+      "positive_labels": 0,
+      "negative_labels": 500
+    },
+    "pii": {
+      "sha256": "1d37d582a697e62735847074ebf4f1198e97671f81d1565d5dcce7b8b8f24316",
+      "cases": 250,
+      "distinct_texts": 250,
+      "characters": 38660,
+      "utf8_bytes": 58655,
+      "positive_labels": 662,
+      "negative_labels": 64
+    },
+    "secrets": {
+      "sha256": "8b9885f4e7f7677fd7be8ac6b99d2cceafe6f4c5fe9a150d1078cfeea62cd445",
+      "cases": 250,
+      "distinct_texts": 250,
+      "characters": 797840,
+      "utf8_bytes": 798008,
+      "positive_labels": 496,
+      "negative_labels": 658
+    },
+    "server": {
+      "sha256": "b1a242aad2480c90052d396f1f2ea052bb2f0acd94b8de1baca3671acf9aba26",
+      "cases": 256,
+      "distinct_texts": 256,
+      "characters": 5067450,
+      "utf8_bytes": 5118255,
+      "positive_labels": 0,
+      "negative_labels": 0
+    }
+  },
+  "runs": {
+    "installed-reference": {
+      "result_sha256": "1cd936e639a7a81ef23c9a29eea6bdf184e234d73b7183aad1c6ab5d86f2f184",
+      "outputs_sha256": "932e2695d37eb2b1b8b6b1f3f033b45740a01e5b7896b1b0189dcb310657c4ef",
+      "records": 2548,
+      "blocks": 2692,
+      "initialization_seconds": 0.166768082883209,
+      "groups": {
+        "pii-pass1": {
+          "records": 250,
+          "blocks": 250,
+          "detector_calls": 250,
+          "cpu_ms_mean": 1.478716,
+          "cpu_ms_p95": 1.738,
+          "wall_ms_mean": 1.4845521799999999,
+          "wall_ms_p95": 1.738291
+        },
+        "secrets-pass1": {
+          "records": 250,
+          "blocks": 250,
+          "detector_calls": 250,
+          "cpu_ms_mean": 6.066308,
+          "cpu_ms_p95": 14.742,
+          "wall_ms_mean": 6.080224688,
+          "wall_ms_p95": 14.743083
+        },
+        "negatives-pass1": {
+          "records": 500,
+          "blocks": 500,
+          "detector_calls": 500,
+          "cpu_ms_mean": 0.298554,
+          "cpu_ms_p95": 0.468,
+          "wall_ms_mean": 0.299399756,
+          "wall_ms_p95": 0.467583
+        },
+        "server-8KB-pass1": {
+          "records": 128,
+          "blocks": 128,
+          "detector_calls": 128,
+          "cpu_ms_mean": 22.5628828125,
+          "cpu_ms_p95": 27.388,
+          "wall_ms_mean": 22.5672570703125,
+          "wall_ms_p95": 27.392958
+        },
+        "server-32KB-pass1": {
+          "records": 128,
+          "blocks": 128,
+          "detector_calls": 128,
+          "cpu_ms_mean": 99.0294140625,
+          "cpu_ms_p95": 116.367,
+          "wall_ms_mean": 99.0669886171875,
+          "wall_ms_p95": 116.489667
+        },
+        "pii-pass2": {
+          "records": 250,
+          "blocks": 250,
+          "detector_calls": 250,
+          "cpu_ms_mean": 0.862208,
+          "cpu_ms_p95": 1.739,
+          "wall_ms_mean": 0.86343668,
+          "wall_ms_p95": 1.740416
+        },
+        "secrets-pass2": {
+          "records": 250,
+          "blocks": 250,
+          "detector_calls": 250,
+          "cpu_ms_mean": 5.750064,
+          "cpu_ms_p95": 14.686,
+          "wall_ms_mean": 5.751516648,
+          "wall_ms_p95": 14.687666
+        },
+        "negatives-pass2": {
+          "records": 500,
+          "blocks": 500,
+          "detector_calls": 500,
+          "cpu_ms_mean": 0.297042,
+          "cpu_ms_p95": 0.462,
+          "wall_ms_mean": 0.297865652,
+          "wall_ms_p95": 0.4625
+        },
+        "server-8KB-pass2": {
+          "records": 128,
+          "blocks": 128,
+          "detector_calls": 128,
+          "cpu_ms_mean": 22.6654140625,
+          "cpu_ms_p95": 27.413,
+          "wall_ms_mean": 22.6724199453125,
+          "wall_ms_p95": 27.414625
+        },
+        "server-32KB-pass2": {
+          "records": 128,
+          "blocks": 128,
+          "detector_calls": 128,
+          "cpu_ms_mean": 99.369,
+          "cpu_ms_p95": 116.564,
+          "wall_ms_mean": 99.39495511718751,
+          "wall_ms_p95": 116.572333
+        },
+        "new-chat": {
+          "records": 12,
+          "blocks": 60,
+          "detector_calls": 60,
+          "cpu_ms_mean": 15.497666666666667,
+          "cpu_ms_p95": 15.665,
+          "wall_ms_mean": 15.499,
+          "wall_ms_p95": 15.667375
+        },
+        "history-chat": {
+          "records": 12,
+          "blocks": 60,
+          "detector_calls": 12,
+          "cpu_ms_mean": 0.3515833333333333,
+          "cpu_ms_p95": 0.371,
+          "wall_ms_mean": 0.35263191666666666,
+          "wall_ms_p95": 0.372333
+        },
+        "mixed-chat": {
+          "records": 12,
+          "blocks": 60,
+          "detector_calls": 36,
+          "cpu_ms_mean": 7.9685,
+          "cpu_ms_p95": 15.687,
+          "wall_ms_mean": 7.969684,
+          "wall_ms_p95": 15.692917
+        }
+      }
+    },
+    "installed-replay": {
+      "result_sha256": "948d37940eed4a7ffacaaef8fee25e80e801058d75f9e103f4c51fa960505060",
+      "outputs_sha256": "932e2695d37eb2b1b8b6b1f3f033b45740a01e5b7896b1b0189dcb310657c4ef",
+      "records": 2548,
+      "blocks": 2692,
+      "initialization_seconds": 0.1672147917561233,
+      "groups": {
+        "pii-pass1": {
+          "records": 250,
+          "blocks": 250,
+          "detector_calls": 250,
+          "cpu_ms_mean": 1.484152,
+          "cpu_ms_p95": 1.765,
+          "wall_ms_mean": 1.485281168,
+          "wall_ms_p95": 1.766458
+        },
+        "secrets-pass1": {
+          "records": 250,
+          "blocks": 250,
+          "detector_calls": 250,
+          "cpu_ms_mean": 6.082192,
+          "cpu_ms_p95": 15.038,
+          "wall_ms_mean": 6.084444176,
+          "wall_ms_p95": 15.040292
+        },
+        "negatives-pass1": {
+          "records": 500,
+          "blocks": 500,
+          "detector_calls": 500,
+          "cpu_ms_mean": 0.298884,
+          "cpu_ms_p95": 0.476,
+          "wall_ms_mean": 0.299814346,
+          "wall_ms_p95": 0.475833
+        },
+        "server-8KB-pass1": {
+          "records": 128,
+          "blocks": 128,
+          "detector_calls": 128,
+          "cpu_ms_mean": 23.2388359375,
+          "cpu_ms_p95": 29.048,
+          "wall_ms_mean": 23.3863470078125,
+          "wall_ms_p95": 29.169667
+        },
+        "server-32KB-pass1": {
+          "records": 128,
+          "blocks": 128,
+          "detector_calls": 128,
+          "cpu_ms_mean": 101.346875,
+          "cpu_ms_p95": 120.349,
+          "wall_ms_mean": 102.807647875,
+          "wall_ms_p95": 120.903084
+        },
+        "pii-pass2": {
+          "records": 250,
+          "blocks": 250,
+          "detector_calls": 250,
+          "cpu_ms_mean": 0.848912,
+          "cpu_ms_p95": 1.71,
+          "wall_ms_mean": 0.849937192,
+          "wall_ms_p95": 1.711042
+        },
+        "secrets-pass2": {
+          "records": 250,
+          "blocks": 250,
+          "detector_calls": 250,
+          "cpu_ms_mean": 5.832412,
+          "cpu_ms_p95": 14.379,
+          "wall_ms_mean": 5.84676516,
+          "wall_ms_p95": 14.379583
+        },
+        "negatives-pass2": {
+          "records": 500,
+          "blocks": 500,
+          "detector_calls": 500,
+          "cpu_ms_mean": 0.297978,
+          "cpu_ms_p95": 0.462,
+          "wall_ms_mean": 0.298943346,
+          "wall_ms_p95": 0.462041
+        },
+        "server-8KB-pass2": {
+          "records": 128,
+          "blocks": 128,
+          "detector_calls": 128,
+          "cpu_ms_mean": 22.6238515625,
+          "cpu_ms_p95": 27.272,
+          "wall_ms_mean": 22.6283088828125,
+          "wall_ms_p95": 27.274666
+        },
+        "server-32KB-pass2": {
+          "records": 128,
+          "blocks": 128,
+          "detector_calls": 128,
+          "cpu_ms_mean": 99.1350625,
+          "cpu_ms_p95": 116.837,
+          "wall_ms_mean": 99.150478484375,
+          "wall_ms_p95": 116.846
+        },
+        "new-chat": {
+          "records": 12,
+          "blocks": 60,
+          "detector_calls": 60,
+          "cpu_ms_mean": 15.205583333333333,
+          "cpu_ms_p95": 15.545,
+          "wall_ms_mean": 15.206982583333334,
+          "wall_ms_p95": 15.5475
+        },
+        "history-chat": {
+          "records": 12,
+          "blocks": 60,
+          "detector_calls": 12,
+          "cpu_ms_mean": 0.3415,
+          "cpu_ms_p95": 0.351,
+          "wall_ms_mean": 0.34239583333333334,
+          "wall_ms_p95": 0.352167
+        },
+        "mixed-chat": {
+          "records": 12,
+          "blocks": 60,
+          "detector_calls": 36,
+          "cpu_ms_mean": 7.771833333333333,
+          "cpu_ms_p95": 15.406,
+          "wall_ms_mean": 7.772711833333333,
+          "wall_ms_p95": 15.407208
+        }
+      }
+    },
+    "core-reference": {
+      "result_sha256": "9500435ff163d3deef78e917220acce7c9ecce47e45cc3cf3a2e9570a92661d2",
+      "outputs_sha256": "ec81b4311d39996696b3c7ef4312d8fcc01930b795de01806dfca34d61a974b9",
+      "records": 2548,
+      "blocks": 2692,
+      "initialization_seconds": 0.16509304102510214,
+      "groups": {
+        "pii-pass1": {
+          "records": 250,
+          "blocks": 250,
+          "detector_calls": 250,
+          "cpu_ms_mean": 1.4905680000000001,
+          "cpu_ms_p95": 1.806,
+          "wall_ms_mean": 1.496524492,
+          "wall_ms_p95": 1.806958
+        },
+        "secrets-pass1": {
+          "records": 250,
+          "blocks": 250,
+          "detector_calls": 250,
+          "cpu_ms_mean": 6.137916,
+          "cpu_ms_p95": 14.983,
+          "wall_ms_mean": 6.1508530079999995,
+          "wall_ms_p95": 14.9855
+        },
+        "negatives-pass1": {
+          "records": 500,
+          "blocks": 500,
+          "detector_calls": 500,
+          "cpu_ms_mean": 0.330808,
+          "cpu_ms_p95": 0.593,
+          "wall_ms_mean": 0.345726086,
+          "wall_ms_p95": 0.597375
+        },
+        "server-8KB-pass1": {
+          "records": 128,
+          "blocks": 128,
+          "detector_calls": 128,
+          "cpu_ms_mean": 22.69353125,
+          "cpu_ms_p95": 27.801,
+          "wall_ms_mean": 22.7276031875,
+          "wall_ms_p95": 27.806542
+        },
+        "server-32KB-pass1": {
+          "records": 128,
+          "blocks": 128,
+          "detector_calls": 128,
+          "cpu_ms_mean": 99.02946875,
+          "cpu_ms_p95": 116.39,
+          "wall_ms_mean": 99.42545571875,
+          "wall_ms_p95": 116.826792
+        },
+        "pii-pass2": {
+          "records": 250,
+          "blocks": 250,
+          "detector_calls": 250,
+          "cpu_ms_mean": 0.862404,
+          "cpu_ms_p95": 1.781,
+          "wall_ms_mean": 0.863741488,
+          "wall_ms_p95": 1.782167
+        },
+        "secrets-pass2": {
+          "records": 250,
+          "blocks": 250,
+          "detector_calls": 250,
+          "cpu_ms_mean": 5.830788,
+          "cpu_ms_p95": 14.634,
+          "wall_ms_mean": 5.833312488,
+          "wall_ms_p95": 14.635583
+        },
+        "negatives-pass2": {
+          "records": 500,
+          "blocks": 500,
+          "detector_calls": 500,
+          "cpu_ms_mean": 0.301006,
+          "cpu_ms_p95": 0.468,
+          "wall_ms_mean": 0.30189664,
+          "wall_ms_p95": 0.468041
+        },
+        "server-8KB-pass2": {
+          "records": 128,
+          "blocks": 128,
+          "detector_calls": 128,
+          "cpu_ms_mean": 22.82596875,
+          "cpu_ms_p95": 28.377,
+          "wall_ms_mean": 22.958919625,
+          "wall_ms_p95": 29.136459
+        },
+        "server-32KB-pass2": {
+          "records": 128,
+          "blocks": 128,
+          "detector_calls": 128,
+          "cpu_ms_mean": 98.9868828125,
+          "cpu_ms_p95": 116.553,
+          "wall_ms_mean": 99.574090171875,
+          "wall_ms_p95": 117.207041
+        },
+        "new-chat": {
+          "records": 12,
+          "blocks": 60,
+          "detector_calls": 60,
+          "cpu_ms_mean": 15.524833333333333,
+          "cpu_ms_p95": 15.768,
+          "wall_ms_mean": 15.526621416666666,
+          "wall_ms_p95": 15.769708
+        },
+        "history-chat": {
+          "records": 12,
+          "blocks": 60,
+          "detector_calls": 12,
+          "cpu_ms_mean": 0.34441666666666665,
+          "cpu_ms_p95": 0.362,
+          "wall_ms_mean": 0.34512508333333336,
+          "wall_ms_p95": 0.362834
+        },
+        "mixed-chat": {
+          "records": 12,
+          "blocks": 60,
+          "detector_calls": 36,
+          "cpu_ms_mean": 8.0155,
+          "cpu_ms_p95": 15.951,
+          "wall_ms_mean": 8.016572916666666,
+          "wall_ms_p95": 15.953
+        }
+      }
+    },
+    "core-replay": {
+      "result_sha256": "40454fc6a368cbe1b90729425a73e34b141c86ad4fd31ef5d6fc9fa7ec0405ba",
+      "outputs_sha256": "ec81b4311d39996696b3c7ef4312d8fcc01930b795de01806dfca34d61a974b9",
+      "records": 2548,
+      "blocks": 2692,
+      "initialization_seconds": 0.1953470418229699,
+      "groups": {
+        "pii-pass1": {
+          "records": 250,
+          "blocks": 250,
+          "detector_calls": 250,
+          "cpu_ms_mean": 1.682092,
+          "cpu_ms_p95": 2.007,
+          "wall_ms_mean": 1.77307498,
+          "wall_ms_p95": 2.030458
+        },
+        "secrets-pass1": {
+          "records": 250,
+          "blocks": 250,
+          "detector_calls": 250,
+          "cpu_ms_mean": 6.436068,
+          "cpu_ms_p95": 16.18,
+          "wall_ms_mean": 6.527978504,
+          "wall_ms_p95": 18.168875
+        },
+        "negatives-pass1": {
+          "records": 500,
+          "blocks": 500,
+          "detector_calls": 500,
+          "cpu_ms_mean": 0.337632,
+          "cpu_ms_p95": 0.573,
+          "wall_ms_mean": 0.349011578,
+          "wall_ms_p95": 0.577209
+        },
+        "server-8KB-pass1": {
+          "records": 128,
+          "blocks": 128,
+          "detector_calls": 128,
+          "cpu_ms_mean": 22.8021171875,
+          "cpu_ms_p95": 28.964,
+          "wall_ms_mean": 23.0491793671875,
+          "wall_ms_p95": 29.10975
+        },
+        "server-32KB-pass1": {
+          "records": 128,
+          "blocks": 128,
+          "detector_calls": 128,
+          "cpu_ms_mean": 99.3405234375,
+          "cpu_ms_p95": 116.92,
+          "wall_ms_mean": 99.7974352109375,
+          "wall_ms_p95": 116.980625
+        },
+        "pii-pass2": {
+          "records": 250,
+          "blocks": 250,
+          "detector_calls": 250,
+          "cpu_ms_mean": 0.866796,
+          "cpu_ms_p95": 1.701,
+          "wall_ms_mean": 0.86791598,
+          "wall_ms_p95": 1.701375
+        },
+        "secrets-pass2": {
+          "records": 250,
+          "blocks": 250,
+          "detector_calls": 250,
+          "cpu_ms_mean": 5.790548,
+          "cpu_ms_p95": 14.69,
+          "wall_ms_mean": 5.79245034,
+          "wall_ms_p95": 14.691291
+        },
+        "negatives-pass2": {
+          "records": 500,
+          "blocks": 500,
+          "detector_calls": 500,
+          "cpu_ms_mean": 0.30354,
+          "cpu_ms_p95": 0.466,
+          "wall_ms_mean": 0.304430992,
+          "wall_ms_p95": 0.466625
+        },
+        "server-8KB-pass2": {
+          "records": 128,
+          "blocks": 128,
+          "detector_calls": 128,
+          "cpu_ms_mean": 22.5399921875,
+          "cpu_ms_p95": 27.566,
+          "wall_ms_mean": 22.593721671875,
+          "wall_ms_p95": 27.830542
+        },
+        "server-32KB-pass2": {
+          "records": 128,
+          "blocks": 128,
+          "detector_calls": 128,
+          "cpu_ms_mean": 98.0705625,
+          "cpu_ms_p95": 115.274,
+          "wall_ms_mean": 98.151893234375,
+          "wall_ms_p95": 115.276709
+        },
+        "new-chat": {
+          "records": 12,
+          "blocks": 60,
+          "detector_calls": 60,
+          "cpu_ms_mean": 15.346083333333333,
+          "cpu_ms_p95": 15.577,
+          "wall_ms_mean": 15.347347166666667,
+          "wall_ms_p95": 15.578833
+        },
+        "history-chat": {
+          "records": 12,
+          "blocks": 60,
+          "detector_calls": 12,
+          "cpu_ms_mean": 0.3405,
+          "cpu_ms_p95": 0.357,
+          "wall_ms_mean": 0.34144083333333336,
+          "wall_ms_p95": 0.356458
+        },
+        "mixed-chat": {
+          "records": 12,
+          "blocks": 60,
+          "detector_calls": 36,
+          "cpu_ms_mean": 7.8415,
+          "cpu_ms_p95": 15.594,
+          "wall_ms_mean": 7.842916833333334,
+          "wall_ms_p95": 15.595416
+        }
+      }
+    }
+  },
+  "variants": {
+    "installed": {
+      "independent_replay_equal": true,
+      "first_and_second_pass_equal": true,
+      "quality": {
+        "pii": {
+          "cases": 250,
+          "cases_masked": 225,
+          "labels": 662,
+          "fully_covered": 381,
+          "exact_span": 381,
+          "partially_covered": 7,
+          "missed": 274,
+          "negative_labels": 64,
+          "negative_labels_touched": 0
+        },
+        "secrets": {
+          "cases": 250,
+          "cases_masked": 245,
+          "labels": 496,
+          "fully_covered": 389,
+          "exact_span": 384,
+          "partially_covered": 38,
+          "missed": 69,
+          "negative_labels": 658,
+          "negative_labels_touched": 67
+        },
+        "negative": {
+          "cases": 500,
+          "cases_masked": 25,
+          "negative_labels": 500,
+          "negative_labels_touched": 24,
+          "false_positive_cases": 25
+        }
+      }
+    },
+    "core": {
+      "independent_replay_equal": true,
+      "first_and_second_pass_equal": true,
+      "quality": {
+        "pii": {
+          "cases": 250,
+          "cases_masked": 226,
+          "labels": 662,
+          "fully_covered": 382,
+          "exact_span": 382,
+          "partially_covered": 7,
+          "missed": 273,
+          "negative_labels": 64,
+          "negative_labels_touched": 0
+        },
+        "secrets": {
+          "cases": 250,
+          "cases_masked": 245,
+          "labels": 496,
+          "fully_covered": 389,
+          "exact_span": 384,
+          "partially_covered": 38,
+          "missed": 69,
+          "negative_labels": 658,
+          "negative_labels_touched": 67
+        },
+        "negative": {
+          "cases": 500,
+          "cases_masked": 25,
+          "negative_labels": 500,
+          "negative_labels_touched": 24,
+          "false_positive_cases": 25
+        }
+      }
+    }
+  },
+  "between_variant_changes": [
+    {
+      "group": "pii-pass1",
+      "id": 111,
+      "before": [],
+      "after": [
+        [
+          16,
+          23
+        ]
+      ]
+    },
+    {
+      "group": "pii-pass2",
+      "id": 111,
+      "before": [],
+      "after": [
+        [
+          16,
+          23
+        ]
+      ]
+    }
+  ],
+  "runtime_file_differences": [
+    "analyzer_engine.py",
+    "context_aware_enhancers/lemma_context_aware_enhancer.py",
+    "predefined_recognizers/country_specific/russia/ru_card_details_recognizer.py"
+  ],
+  "tests": {
+    "integrity": 9,
+    "quality_metrics": 3,
+    "ruff": "passed",
+    "test_files_sha256": {
+      "test_baseline_snapshot.py": "5eef349ea30d1badd16d0b5efa60d46b6f6b29d44ffa2dc063036feba87fecec",
+      "test_ru_benchmark_metrics.py": "45935e75dba9b52326c4b48c8ad26cc8ffbcd7fa32a6d6897a7c421b53a3d2ee"
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "environment": {
+    "python": "3.13.5 (main, Jun 11 2025, 15:36:57) [Clang 16.0.0 (clang-1600.0.26.6)]",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "logical_cpus": 12,
+    "dependencies": {
+      "spacy": "3.8.18",
+      "regex": "2026.9.29",
+      "google-re2": "1.1.20251105",
+      "pyahocorasick": "2.3.1",
+      "phonenumbers": "9.0.42"
+    },
+    "core_head": "a1fae8eeef2e70a6ff8fd8ff795f035696662005",
+    "port_head": "7262b868f89682e93633dcb3d6f6b1c062bbe475",
+    "dataset_sha256": {
+      "load-testing/runs/campaign-remaining-20261120/cases-diverse.jsonl": "b1a242aad2480c90052d396f1f2ea052bb2f0acd94b8de1baca3671acf9aba26"
+    },
+    "core_source_sha256": "8d94f979c5b5d7bd39cc8258bf727419dfdb3521ab01e88aa5eceb4109a72b4b",
+    "port_profile_sha256": "b95dadcb5a4a66444afe9134db717a695e88eadaf9b6fe4e87bed542ed7efa29",
+    "workload": "server"
+  },
+  "input_bytes": {
+    "total": 5118255,
+    "max": 32000,
+    "cases": 256
+  },
+  "quality": {
+    "datasets": {
+      "server": {
+        "cases": 256,
+        "cases_masked": 256
+      }
+    },
+    "incomplete_labels": []
+  },
+  "scaling": [
+    {
+      "workers": 1,
+      "cases": 512,
+      "startup_seconds": 1.1785081252455711,
+      "elapsed_seconds": 31.392366041895002,
+      "blocks_per_second": 16.309697692639833,
+      "cpu_ms_per_block": 61.11462890624997,
+      "cpu_seconds": 31.290689999999984,
+      "scan_wall_p95_ms": 114.54079207032919,
+      "scan_wall_p99_ms": 118.86954167857766,
+      "batch_queue_p95_ms": 29807.909457944334,
+      "mismatches": 0
+    },
+    {
+      "workers": 4,
+      "cases": 512,
+      "startup_seconds": 1.3176903752610087,
+      "elapsed_seconds": 8.689572291914374,
+      "blocks_per_second": 58.92119690130374,
+      "cpu_ms_per_block": 66.84827148437503,
+      "cpu_seconds": 34.226315000000014,
+      "scan_wall_p95_ms": 129.13562497124076,
+      "scan_wall_p99_ms": 152.25545829162002,
+      "batch_queue_p95_ms": 8195.304749999195,
+      "mismatches": 0
+    },
+    {
+      "workers": 8,
+      "cases": 512,
+      "startup_seconds": 1.4445000002160668,
+      "elapsed_seconds": 4.901489290874451,
+      "blocks_per_second": 104.45804726192853,
+      "cpu_ms_per_block": 75.25475976562501,
+      "cpu_seconds": 38.530437000000006,
+      "scan_wall_p95_ms": 144.07962514087558,
+      "scan_wall_p99_ms": 173.62720891833305,
+      "batch_queue_p95_ms": 4569.950665812939,
+      "mismatches": 0
+    },
+    {
+      "workers": 12,
+      "cases": 512,
+      "startup_seconds": 1.971446834038943,
+      "elapsed_seconds": 5.712782834190875,
+      "blocks_per_second": 89.62357135924924,
+      "cpu_ms_per_block": 94.108,
+      "cpu_seconds": 48.183296,
+      "scan_wall_p95_ms": 299.87137485295534,
+      "scan_wall_p99_ms": 535.2567918598652,
+      "batch_queue_p95_ms": 5348.202583845705,
+      "mismatches": 0
+    }
+  ],
+  "scope": "Local spawned workers; uncached Detector calls; no HTTP/Redis/LLM. Finite queued batch, not steady-state open-loop RPS. Labels may be incomplete."
+}

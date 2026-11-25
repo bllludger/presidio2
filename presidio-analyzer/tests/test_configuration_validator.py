@@ -4,7 +4,7 @@
 import inspect
 
 import pytest
-from presidio_analyzer.context_aware_enhancers import LemmaContextAwareEnhancer
+from presidio_analyzer.context_aware_enhancers import CompositeContextAwareEnhancer
 from presidio_analyzer.input_validation import (
     ConfigurationValidator,
     ContextAwareEnhancerConfig,
@@ -589,7 +589,7 @@ def test_when_context_aware_enhancer_section_is_empty_then_analyzer_config_passe
 
 def test_context_aware_enhancer_config_fields_match_enhancer_constructor():
     constructor_params = set(
-        inspect.signature(LemmaContextAwareEnhancer.__init__).parameters
+        inspect.signature(CompositeContextAwareEnhancer.__init__).parameters
     ) - {"self"}
     assert set(ContextAwareEnhancerConfig.model_fields) == constructor_params
 
@@ -661,7 +661,7 @@ def test_when_context_aware_enhancer_section_is_invalid_then_raises_with_message
     assert expected_message in message
     assert (
         "Valid keys are: ['context_matching_mode', 'context_prefix_count', "
-        "'context_similarity_factor', 'context_suffix_count', "
+        "'context_similarity_factor', 'context_suffix_count', 'enhancers', "
         "'min_score_with_context_similarity']"
     ) in message
 
