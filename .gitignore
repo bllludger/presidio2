@@ -143,3 +143,21 @@ mkdocs/
 # Visual Studio
 /.vs
 /TestResults
+
+# Local development and research are not published.
+tests/
+test/
+e2e-tests/
+benchmarks/
+checks/
+validation/
+research/
+reports/
+datasets/
+/RU-MASK.md
+/.local/
+/docs/samples/
+/.github/workflows/release-docs.yml
+/mkdocs.yml
+/scripts/zensical_build.py
+/overrides/
